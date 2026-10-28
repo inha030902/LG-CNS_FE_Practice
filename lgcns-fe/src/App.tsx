@@ -1,15 +1,12 @@
-import { useState, useEffect, Fragment } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 import Ticks from './components/Ticks'
 import CenterHero from './components/CenterHero'
+import CountBtn from './components/CountBtn'
 
 function App() {
-  const [count, setCount] = useState<number>(0)
-  useEffect(() => {
-    setCount(Number("1"));
-  }, []);
+  
 
   // let cnt = 0;
 
@@ -21,7 +18,7 @@ function App() {
 
   return (
     <>
-      <CenterHero count={count} setCount={setCount} />
+      <CenterHero />
       <Ticks />
       <section id="next-steps">
         <div id="docs">
@@ -101,10 +98,13 @@ function App() {
               </a>
             </li>
           </ul>
+          <CountBtn />
         </div>
       </section>
       <Ticks />
-      <section id="spacer">Count is {count}</section>
+      <section id="spacer">
+        <CountBtn />
+      </section>
     </>
   )
 }

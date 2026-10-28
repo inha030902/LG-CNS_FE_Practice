@@ -1,4 +1,7 @@
-export default function CountBtn({ count, setCount }: { count: number | undefined, setCount: (count: number) => void }) {
+import { useState } from "react"
+
+export default function CountBtn() {
+    const [count, setCount] = useState<number>(0)
     return (
         <button
             type="button"
