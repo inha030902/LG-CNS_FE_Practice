@@ -6,14 +6,15 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  useEffect(() => {
   
-  let cnt = 0;
+  /*let cnt = 0;
 
   const addCounter = () => {
     console.log('addCounter');
     cnt += 1;
     console.log(cnt);
-  }
+  }*/
 
   return (
     <>
@@ -29,13 +30,13 @@ function App() {
             Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
           </p>
         </div>
-        <button
+        /*<button
           type="button"
           className="counter"
           onClick={() => addCounter()}
         >
           Count is {count}
-        </button>
+        </button>*/
       </section>
 
       <div className="ticks"></div>
