@@ -1,14 +1,12 @@
 import heroImg from '../assets/hero.png'
 import reactLogo from '../assets/react.svg'
 import viteLogo from '../assets/vite.svg'
+import CountBtn from './CountBtn'
 
+export default function CenterHero({ count, setCount }: { count: number | undefined, setCount: (count: number) => void }) {
 
-
-
-
-export default function CenterHero({ count, setCount }: { count: number; setCount: React.Dispatch<React.SetStateAction<number>> }) {
-  return (
-    <section id="center">
+    return (
+        <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
           <img src={reactLogo} className="framework" alt="React logo" />
@@ -20,18 +18,14 @@ export default function CenterHero({ count, setCount }: { count: number; setCoun
             Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
           </p>
         </div>
-        {/*<button
+        {/* <button
           type="button"
           className="counter"
           onClick={() => addCounter()}
         >
-          Count is {count}
-        </button>*/}
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+          Count is {cnt}
+        </button> */}
+        <CountBtn count={count || 0} setCount={setCount} />
       </section>
+    )
+}

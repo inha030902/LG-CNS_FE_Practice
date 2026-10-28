@@ -1,56 +1,29 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 import Ticks from './components/Ticks'
+import CenterHero from './components/CenterHero'
 
 function App() {
   const [count, setCount] = useState<number>(0)
   useEffect(() => {
     setCount(Number("1"));
-  }, [])
-  
-  /*let cnt = 0;
+  }, []);
 
-  const addCounter = () => {
-    console.log('addCounter');
-    cnt += 1;
-    console.log(cnt);
-  }*/
+  // let cnt = 0;
+
+  // const addCounter = () => {
+  //   console.log('addCounter');
+  //   cnt += 1;
+  //   console.log(cnt);
+  // }
 
   return (
-    <div>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>LG CNS 7TH</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        {/*<button
-          type="button"
-          className="counter"
-          onClick={() => addCounter()}
-        >
-          Count is {count}
-        </button>*/}
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
+    <>
+      <CenterHero count={count} setCount={setCount} />
       <Ticks />
-
       <section id="next-steps">
         <div id="docs">
           <svg className="icon" role="presentation" aria-hidden="true">
@@ -131,10 +104,9 @@ function App() {
           </ul>
         </div>
       </section>
-
       <Ticks />
-      <section id="spacer"></section>
-    </div>
+      <section id="spacer">Count is {count}</section>
+    </>
   )
 }
 
