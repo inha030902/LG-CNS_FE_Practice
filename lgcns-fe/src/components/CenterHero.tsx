@@ -5,9 +5,6 @@ import CountBtn from './CountBtn'
 
 export default function CenterHero() {
 
-    if (count === undefined) {
-        return <div>Loading...</div>
-    }
     return (
         <section id="center">
         <div className="hero">
