@@ -8,6 +8,7 @@ function App() {
   const [count, setCount] = useState(0)
   useEffect(() => {
     setCount("1")
+  }, [])
   
   /*let cnt = 0;
 
