@@ -1,4 +1,12 @@
-export defalut function CenterHero() {
+import heroImg from '../assets/hero.png'
+import reactLogo from '../assets/react.svg'
+import viteLogo from '../assets/vite.svg'
+
+
+
+
+
+export default function CenterHero({ count, setCount }: { count: number; setCount: React.Dispatch<React.SetStateAction<number>> }) {
   return (
     <section id="center">
         <div className="hero">
