@@ -11,6 +11,7 @@ function App() {
     console.log(count)
 ;  }, [count])
 
+  const addCount = () => {
   return (
     <>
       <section id="center">
@@ -28,7 +29,7 @@ function App() {
         <button
           type="button"
           className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          onClick={() => addCount()}
         >
           Count is {count}
         </button>
