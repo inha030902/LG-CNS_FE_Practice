@@ -6,14 +6,15 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  
   let cnt = 0;
 
   const addCounter = () => {
-  useEffect(() => {
-    console.log(count)
-;  }, [count])
+    console.log('addCounter');
+    cnt += 1;
+    console.log(cnt);
+  }
 
-  const addCount = () => {
   return (
     <>
       <section id="center">
@@ -31,7 +32,7 @@ function App() {
         <button
           type="button"
           className="counter"
-          onClick={() => addCount()}
+          onClick={() => addCounter()}
         >
           Count is {count}
         </button>
