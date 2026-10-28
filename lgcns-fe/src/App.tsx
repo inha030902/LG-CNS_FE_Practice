@@ -3,6 +3,7 @@ import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
+import Ticks from './components/Ticks'
 
 function App() {
   const [count, setCount] = useState<number>(0)
@@ -48,7 +49,7 @@ function App() {
         </button>
       </section>
 
-      <div className="ticks"></div>
+      <Ticks />
 
       <section id="next-steps">
         <div id="docs">
@@ -131,7 +132,7 @@ function App() {
         </div>
       </section>
 
-      <div className="ticks"></div>
+      <Ticks />
       <section id="spacer"></section>
     </div>
   )
