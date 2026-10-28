@@ -6,7 +6,9 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  let cnt = 0;
 
+  const addCounter = () => {
   useEffect(() => {
     console.log(count)
 ;  }, [count])
