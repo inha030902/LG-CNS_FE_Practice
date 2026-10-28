@@ -1,0 +1,47 @@
+@import 'color.css';
+@import 'font.css';
+
+.container>#btn01.mybtn {
+    width: fit-content;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    &:hover {
+        background-color: #fff;
+        color: #000;
+    }
+}
+
+.container>#btn01.mybtn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.container {
+    background-color: red;
+    padding: 10px;
+}
+
+h1 {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+p {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-primary);
+}
+
+.input01 {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+/*  */
