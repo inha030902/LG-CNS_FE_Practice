@@ -8,8 +8,8 @@ export default function Home() {
           className="dark:invert h-5 w-[100px]"
           src="/next.svg"
           alt="Next.js logo"
-          width={100}
-          height={20}
+          width={100} // 이 부분은 이미지의 너비를 설정하는 속성입니다. 100px로 설정되어 있습니다.
+          height={20} // 이 부분은 이미지의 높이를 설정하는 속성입니다. 20px로 설정되어 있습니다.
           priority
         />
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
