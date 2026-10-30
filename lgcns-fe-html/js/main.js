@@ -1,8 +1,10 @@
-const counter = document.querySelector('.counter')
-let count = 0
-console.log(counter)
+const navToggle = document.querySelector(".nav-toggle");
+const mobileMenu = document.querySelector(".mobile-menu");
 
-counter.addEventListener('click', () => {
-  count += 1
-  counter.textContent = `Count is ${count}`
-})
+if (navToggle && mobileMenu) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", String(!isOpen));
+    mobileMenu.hidden = isOpen;
+  });
+}

@@ -1,0 +1,40 @@
+---
+description: 사용자가 "커푸피"라고 하면 git add, commit, push 후 PR과 PR 메시지를 작성한다
+alwaysApply: true
+---
+
+# 커푸피
+
+사용자가 **커푸피**라고 하면 아래를 바로 실행한다. 확인 질문을 하지 않는다.
+
+1. 병렬로 `git status`, `git diff` (staged + unstaged), `git log`로 최근 커밋 스타일, `git branch -vv`와 기본 브랜치를 확인한다.
+2. 현재 브랜치가 `main` 또는 `master`이면 변경 내용에 맞는 브랜치를 만든 뒤 그 브랜치에서 진행한다.
+3. 관련 파일을 `git add` 한다. `.env`, 자격 증명, 시크릿 파일은 제외하고 사용자에게 알린다.
+4. 변경의 why를 담은 1–2문장으로 커밋한다. 메시지 스타일은 최근 커밋을 따른다.
+
+```bash
+git commit -m "$(cat <<'EOF'
+커밋 메시지
+
+EOF
+)"
+```
+
+5. `git status`로 커밋 성공을 확인한 뒤 `git push -u origin HEAD` 한다.
+6. `gh pr create`로 PR을 만든다. 제목은 커밋 의도에 맞추고, 본문은 아래 형식을 쓴다.
+
+```bash
+gh pr create --title "PR 제목" --body "$(cat <<'EOF'
+## Summary
+- 변경 요약 1–3개
+
+## Test plan
+- [ ] 확인 항목
+
+EOF
+)"
+```
+
+7. 끝나면 PR URL을 알려 준다.
+
+금지: `git config` 변경, `--no-verify`, force push, 파괴적 reset, 빈 커밋, 훅 실패 시 amend. 훅이 실패하면 원인을 고치고 새 커밋을 만든다.
