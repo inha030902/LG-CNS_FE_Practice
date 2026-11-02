@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useFormStatus } from "react-dom";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../providers/AuthProvider";
 
-import Form from "next/form";
 import { Button } from "@/components/ui/button";
 import FormField from "../molecules/FormField";
 import initialValues from "@/types/initial/loginInitial";
@@ -12,14 +14,28 @@ import loginSchema, { loginFieldMessage } from "@/schema/loginSchema";
 
 type LoginFieldName = keyof UserPayloadType;
 
-export default function LoginForm({
-  handleSubmit,
-}: {
-  handleSubmit: (formData: FormData) => void;
-}) {
+function LoginSubmitButton({ isValid }: { isValid: boolean }) {
+  const { pending } = useFormStatus();
+
+  return (
+    <Button type="submit" disabled={!isValid || pending} aria-busy={pending}>
+      {pending ? "로그인중" : "Login"}
+    </Button>
+  );
+}
+
+export default function LoginForm() {
   const [payload, setPayload] = useState(initialValues);
   const [errors, setErrors] = useState(emptyErrors);
   const isValid = loginSchema.safeParse(payload).success;
+  const { isLoggedIn } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      router.replace("/");
+    }
+  }, [isLoggedIn, router]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -34,7 +50,7 @@ export default function LoginForm({
   };
 
   return (
-    <Form action={handleSubmit}>
+    <>
       <FormField
         id="userId"
         type="text"
@@ -55,9 +71,7 @@ export default function LoginForm({
         isClearable={true}
         onChange={handleChange}
       />
-      <Button type="submit" disabled={!isValid}>
-        Login
-      </Button>
-    </Form>
+      <LoginSubmitButton isValid={isValid} />
+    </>
   );
 }
