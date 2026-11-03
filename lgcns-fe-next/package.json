@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "db:push": "node --env-file=.env ./scripts/with-database-url.mjs db push",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
