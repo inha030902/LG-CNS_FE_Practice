@@ -2,12 +2,15 @@
 import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 
-export default function GoogleLoginButton() {
+export default function GoogleLoginButton({ callbackUrl }: { callbackUrl: string }) {
     const handleGoogleLogin = () => {
-        signIn("google");
+        signIn("google", {
+            redirect: true,
+            callbackUrl,
+        });
     };
     return (
-        <Button onClick={handleGoogleLogin} variant="outline" className="w-full py-4">
+        <Button onClick={handleGoogleLogin} variant="outline" className="w-full py-4 py-4">
             google login
         </Button>
     );
