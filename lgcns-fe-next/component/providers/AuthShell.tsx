@@ -10,5 +10,9 @@ export default async function AuthShell({ children }: { children: React.ReactNod
   console.log("=============AuthShell=============");
   console.log(session);
 
-  return <AuthProvider accessToken={session?.accessToken ?? null}>{children}</AuthProvider>;
+  return (
+    <AuthProvider accessToken={session?.accessToken ?? null} isLoggedIn={Boolean(session)}>
+      {children}
+    </AuthProvider>
+  );
 }

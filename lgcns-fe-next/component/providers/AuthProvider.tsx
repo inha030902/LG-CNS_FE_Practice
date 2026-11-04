@@ -14,14 +14,16 @@ const AuthContext = createContext<AuthContextValue>({
 
 export function AuthProvider({
   accessToken,
+  isLoggedIn,
   children,
 }: {
   accessToken: string | null;
+  isLoggedIn: boolean;
   children: React.ReactNode;
 }) {
   const value = {
     accessToken,
-    isLoggedIn: Boolean(accessToken),
+    isLoggedIn,
   };
   console.log("=============AuthProvider=============");
   console.log(value);

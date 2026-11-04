@@ -1,8 +1,9 @@
+import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import LoginSection from "@/component/templates/LoginSection";
-import { readAccessToken } from "@/lib/readAccessToken";
+import { authOptions } from "@/lib/authOptions";
 
 export default async function Login() {
-  if (await readAccessToken()) redirect("/");
+  if (await getServerSession(authOptions)) redirect("/");
   return <LoginSection />;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useMemo, useState } from "react";
-import type { SignupErrors, SignupStep } from "@/schema/signupSchema";
+import type { SignupErrors, SignupStep } from "@/actions/draft";
 
 type SignupDraft = {
   userId: string;
