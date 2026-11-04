@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import KakaoProvider from "next-auth/providers/kakao";
 
 import { userService } from "@/service/userService";
 
@@ -22,6 +23,8 @@ export const authOptions: NextAuthOptions = {
           password: credentials.password,
         });
         if (!result.ok) return null;
+        console.log("=============authOptions.authorize=============");
+        console.log(result);
 
         return {
           id: result.user.id,
@@ -31,6 +34,10 @@ export const authOptions: NextAuthOptions = {
           expiresIn: result.expiresIn,
         };
       },
+    }),
+    KakaoProvider({
+      clientId: process.env.KAKAO_CLIENT_ID ?? "",
+      clientSecret: process.env.KAKAO_CLIENT_SECRET ?? "",
     }),
   ],
   KakaoProvider: {
@@ -56,6 +63,11 @@ export const authOptions: NextAuthOptions = {
         name: token.name ?? "",
       };
       return session;
+    },
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
     },
   },
 };
