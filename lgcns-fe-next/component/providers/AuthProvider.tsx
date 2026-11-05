@@ -14,19 +14,17 @@ const AuthContext = createContext<AuthContextValue>({
 
 export function AuthProvider({
   accessToken,
-  isLoggedIn,
   children,
 }: {
   accessToken: string | null;
-  isLoggedIn: boolean;
   children: React.ReactNode;
 }) {
   const value = {
     accessToken,
-    isLoggedIn,
+    isLoggedIn: Boolean(accessToken),
   };
-  console.log("=============AuthProvider=============");
-  console.log(value);
+  // console.log("=============AuthProvider=============");
+  // console.log(value);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

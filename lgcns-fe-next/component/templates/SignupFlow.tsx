@@ -1,7 +1,17 @@
 "use client";
 
 import { createContext, useContext, useMemo, useState } from "react";
-import type { SignupErrors, SignupStep } from "@/actions/draft";
+
+type SignupStep = 1 | 2 | 3 | 4;
+
+type SignupErrors = {
+  userId?: string;
+  email?: string;
+  password?: string;
+  interests?: string;
+  profileImageUrl?: string;
+  form?: string;
+};
 
 type SignupDraft = {
   userId: string;
@@ -34,7 +44,11 @@ export function SignupFlow({ children }: { children: React.ReactNode }) {
     [step, draft, errors],
   );
 
-  return <SignupFlowContext.Provider value={value}>{children}</SignupFlowContext.Provider>;
+  return (
+    <SignupFlowContext.Provider value={value}>
+      {children}
+    </SignupFlowContext.Provider>
+  );
 }
 
 export function useSignupFlow() {
