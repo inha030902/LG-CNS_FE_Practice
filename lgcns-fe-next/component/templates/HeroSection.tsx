@@ -1,14 +1,13 @@
+import { Section } from "@/components/ui/landmark";
+import ContainerWrapper from "../atoms/ContainerWrapper";
 import HeroSwiperBanner from "../organisms/HeroSwiperBanner";
 
 export default function HeroSection() {
   return (
-    <section>
-      {/* swiper */}
-      <div id="swiper">
+    <Section className="px-4 pt-10">
+      <ContainerWrapper>
         <HeroSwiperBanner />
-        {/* moleclues items */}
-        {/* moleclues controls */}
-      </div>
-    </section>
+      </ContainerWrapper>
+    </Section>
   );
 }
