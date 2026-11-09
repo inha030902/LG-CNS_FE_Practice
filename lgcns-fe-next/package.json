@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "db:push": "node --env-file=.env ./scripts/with-database-url.mjs db push",
+    "db:push": "node --env-file-if-exists=.env --env-file-if-exists=.env.development --env-file-if-exists=.env.local ./scripts/with-database-url.mjs db push",
     "db:seed": "node ./scripts/seed-sample.mjs",
     "build": "next build",
     "start": "next start",
